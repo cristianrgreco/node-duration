@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var TemporalUnit;
 (function (TemporalUnit) {
-    TemporalUnit[TemporalUnit["MILLISECONDS"] = 0] = "MILLISECONDS";
-    TemporalUnit[TemporalUnit["SECONDS"] = 1] = "SECONDS";
-    TemporalUnit[TemporalUnit["MINUTES"] = 2] = "MINUTES";
-    TemporalUnit[TemporalUnit["HOURS"] = 3] = "HOURS";
+    TemporalUnit["MILLISECONDS"] = "MILLISECONDS";
+    TemporalUnit["SECONDS"] = "SECONDS";
+    TemporalUnit["MINUTES"] = "MINUTES";
+    TemporalUnit["HOURS"] = "HOURS";
 })(TemporalUnit = exports.TemporalUnit || (exports.TemporalUnit = {}));
 var Duration = /** @class */ (function () {
     function Duration(amount, unit) {

@@ -1,9 +1,9 @@
 declare type Amount = number;
 export declare enum TemporalUnit {
-    MILLISECONDS = 0,
-    SECONDS = 1,
-    MINUTES = 2,
-    HOURS = 3
+    MILLISECONDS = "MILLISECONDS",
+    SECONDS = "SECONDS",
+    MINUTES = "MINUTES",
+    HOURS = "HOURS"
 }
 export declare class Duration {
     private readonly amount;

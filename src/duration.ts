@@ -1,10 +1,10 @@
 type Amount = number;
 
 export enum TemporalUnit {
-    MILLISECONDS,
-    SECONDS,
-    MINUTES,
-    HOURS
+    MILLISECONDS = "MILLISECONDS",
+    SECONDS = "SECONDS",
+    MINUTES = "MINUTES",
+    HOURS = "HOURS"
 }
 
 export class Duration {
