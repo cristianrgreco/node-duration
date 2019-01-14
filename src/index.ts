@@ -1,1 +1,1 @@
-export { Duration } from './duration';
+export { Duration, TemporalUnit } from "./duration";

@@ -4,6 +4,8 @@ var TemporalUnit;
 (function (TemporalUnit) {
     TemporalUnit[TemporalUnit["MILLISECONDS"] = 0] = "MILLISECONDS";
     TemporalUnit[TemporalUnit["SECONDS"] = 1] = "SECONDS";
+    TemporalUnit[TemporalUnit["MINUTES"] = 2] = "MINUTES";
+    TemporalUnit[TemporalUnit["HOURS"] = 3] = "HOURS";
 })(TemporalUnit = exports.TemporalUnit || (exports.TemporalUnit = {}));
 var Duration = /** @class */ (function () {
     function Duration(amount, unit) {
@@ -20,15 +22,31 @@ var Duration = /** @class */ (function () {
 }());
 exports.Duration = Duration;
 var stateMachine = function (amount) {
-    var _a, _b, _c;
+    var _a, _b, _c, _d, _e;
     return (_a = {},
         _a[TemporalUnit.MILLISECONDS] = (_b = {},
             _b[TemporalUnit.MILLISECONDS] = amount,
             _b[TemporalUnit.SECONDS] = amount / 1000,
+            _b[TemporalUnit.MINUTES] = amount / 60000,
+            _b[TemporalUnit.HOURS] = amount / 3.6e6,
             _b),
         _a[TemporalUnit.SECONDS] = (_c = {},
             _c[TemporalUnit.MILLISECONDS] = amount * 1000,
             _c[TemporalUnit.SECONDS] = amount,
+            _c[TemporalUnit.MINUTES] = amount / 60,
+            _c[TemporalUnit.HOURS] = amount / 3600,
             _c),
+        _a[TemporalUnit.MINUTES] = (_d = {},
+            _d[TemporalUnit.MILLISECONDS] = amount * 60000,
+            _d[TemporalUnit.SECONDS] = amount * 60,
+            _d[TemporalUnit.MINUTES] = amount,
+            _d[TemporalUnit.HOURS] = amount / 60,
+            _d),
+        _a[TemporalUnit.HOURS] = (_e = {},
+            _e[TemporalUnit.MILLISECONDS] = amount * 3.6e6,
+            _e[TemporalUnit.SECONDS] = amount * 3600,
+            _e[TemporalUnit.MINUTES] = amount * 60,
+            _e[TemporalUnit.HOURS] = amount,
+            _e),
         _a);
 };
