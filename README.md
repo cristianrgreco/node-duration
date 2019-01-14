@@ -12,7 +12,7 @@ npm i --save node-duration
 
 ## Usage
 
-```javascript
+```typescript
 import { Duration, TemporalUnit } from "node-duration";
 
 const duration = new Duration(60_000, TemporalUnit.MILLISECONDS);
