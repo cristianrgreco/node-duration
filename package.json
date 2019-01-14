@@ -15,6 +15,14 @@
   ],
   "author": "Cristian Greco",
   "license": "MIT",
+  "homepage": "https://github.com/cristianrgreco/node-duration#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cristianrgreco/node-duration"
+  },
+  "bugs": {
+    "url": "https://github.com/cristianrgreco/node-duration/issues"
+  },
   "devDependencies": {
     "@types/jest": "^23.3.12",
     "jest": "^23.6.0",
