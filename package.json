@@ -1,0 +1,27 @@
+{
+  "name": "node-duration",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "description": "Create and convert durations to other temporal units",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "lint": "tslint --fix src/**/*.ts",
+    "format": "prettier --write src/**/*.ts"
+  },
+  "keywords": [
+    "duration"
+  ],
+  "author": "Cristian Greco",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "jest": "^23.6.0",
+    "prettier": "^1.15.3",
+    "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
+    "typescript": "^3.2.2"
+  }
+}
