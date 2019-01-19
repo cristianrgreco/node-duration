@@ -1,6 +1,6 @@
 {
   "name": "node-duration",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "dist/index",
   "types": "dist/index",
   "description": "Create and convert durations to other temporal units",
