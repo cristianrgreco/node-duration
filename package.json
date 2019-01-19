@@ -1,17 +1,22 @@
 {
   "name": "node-duration",
   "version": "1.0.3",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "dist/index",
+  "types": "dist/index",
   "description": "Create and convert durations to other temporal units",
   "scripts": {
-    "build": "tsc",
+    "prepublish": "npm run build",
+    "build": "npm run clean && tsc",
+    "clean": "rm -rf dist",
     "test": "jest",
     "lint": "tslint --fix src/**/*.ts",
     "format": "prettier --write src/**/*.ts"
   },
   "keywords": [
     "duration"
+  ],
+  "files": [
+    "dist"
   ],
   "author": "Cristian Greco",
   "license": "MIT",
