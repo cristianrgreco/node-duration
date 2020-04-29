@@ -1,6 +1,4 @@
-type Amount = number;
-
-export enum TemporalUnit {
+enum TemporalUnit {
     MILLISECONDS = "MILLISECONDS",
     SECONDS = "SECONDS",
     MINUTES = "MINUTES",
@@ -8,42 +6,70 @@ export enum TemporalUnit {
 }
 
 export class Duration {
-    constructor(private readonly amount: Amount, private readonly unit: TemporalUnit) {}
+    private constructor(private readonly value: number, private readonly unit: TemporalUnit) {}
 
-    public get(unit: TemporalUnit): Amount {
-        return this.convert(unit);
+    public static ofMillis(value: number): Duration {
+        return new Duration(value, TemporalUnit.MILLISECONDS);
     }
 
-    private convert(to: TemporalUnit): Amount {
-        return stateMachine(this.amount)[this.unit][to];
+    public static ofSeconds(value: number): Duration {
+        return new Duration(value, TemporalUnit.SECONDS);
+    }
+
+    public static ofMinutes(value: number): Duration {
+        return new Duration(value, TemporalUnit.MINUTES);
+    }
+
+    public static ofHours(value: number): Duration {
+        return new Duration(value, TemporalUnit.HOURS);
+    }
+
+    public toMillis(): number {
+        return this.convert(TemporalUnit.MILLISECONDS);
+    }
+
+    public toSeconds(): number {
+        return this.convert(TemporalUnit.SECONDS);
+    }
+
+    public toMinutes(): number {
+        return this.convert(TemporalUnit.MINUTES);
+    }
+
+    public toHours(): number {
+        return this.convert(TemporalUnit.HOURS);
+    }
+
+    private convert(to: TemporalUnit): number {
+        return stateMachine(this.value)[this.unit][to];
     }
 }
 
-type StateMachine = { [from in TemporalUnit]: { [to in TemporalUnit]: Amount } };
+type StateMachine = { [from in TemporalUnit]: { [to in TemporalUnit]: number } };
 
-const stateMachine = (amount: Amount): StateMachine => ({
+const stateMachine = (value: number): StateMachine => ({
     [TemporalUnit.MILLISECONDS]: {
-        [TemporalUnit.MILLISECONDS]: amount,
-        [TemporalUnit.SECONDS]: amount / 1000,
-        [TemporalUnit.MINUTES]: amount / 60000,
-        [TemporalUnit.HOURS]: amount / 3.6e6
+        [TemporalUnit.MILLISECONDS]: value,
+        [TemporalUnit.SECONDS]: value / 1000,
+        [TemporalUnit.MINUTES]: value / 60000,
+        [TemporalUnit.HOURS]: value / 3.6e6
     },
     [TemporalUnit.SECONDS]: {
-        [TemporalUnit.MILLISECONDS]: amount * 1000,
-        [TemporalUnit.SECONDS]: amount,
-        [TemporalUnit.MINUTES]: amount / 60,
-        [TemporalUnit.HOURS]: amount / 3600
+        [TemporalUnit.MILLISECONDS]: value * 1000,
+        [TemporalUnit.SECONDS]: value,
+        [TemporalUnit.MINUTES]: value / 60,
+        [TemporalUnit.HOURS]: value / 3600
     },
     [TemporalUnit.MINUTES]: {
-        [TemporalUnit.MILLISECONDS]: amount * 60000,
-        [TemporalUnit.SECONDS]: amount * 60,
-        [TemporalUnit.MINUTES]: amount,
-        [TemporalUnit.HOURS]: amount / 60
+        [TemporalUnit.MILLISECONDS]: value * 60000,
+        [TemporalUnit.SECONDS]: value * 60,
+        [TemporalUnit.MINUTES]: value,
+        [TemporalUnit.HOURS]: value / 60
     },
     [TemporalUnit.HOURS]: {
-        [TemporalUnit.MILLISECONDS]: amount * 3.6e6,
-        [TemporalUnit.SECONDS]: amount * 3600,
-        [TemporalUnit.MINUTES]: amount * 60,
-        [TemporalUnit.HOURS]: amount
+        [TemporalUnit.MILLISECONDS]: value * 3.6e6,
+        [TemporalUnit.SECONDS]: value * 3600,
+        [TemporalUnit.MINUTES]: value * 60,
+        [TemporalUnit.HOURS]: value
     }
 });

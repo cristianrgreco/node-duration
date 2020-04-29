@@ -13,10 +13,10 @@ npm i --save node-duration
 ## Usage
 
 ```typescript
-import { Duration, TemporalUnit } from "node-duration";
+import { Duration } from "node-duration";
 
-const duration = new Duration(60_000, TemporalUnit.MILLISECONDS);
+const duration = Duration.ofMillis(60000);
 
-duration.get(TemporalUnit.SECONDS) // 60
-duration.get(TemporalUnit.MINUTES) //  1
+duration.toSeconds() // 60
+duration.toMinutes() //  1
 ```
